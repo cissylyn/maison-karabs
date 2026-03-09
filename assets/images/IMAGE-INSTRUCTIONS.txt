@@ -1,0 +1,48 @@
+<!-- 
+    PLACEHOLDER IMAGE INSTRUCTIONS
+    
+    For the website to display properly, please add your images to the following locations:
+    
+    REQUIRED IMAGES:
+    
+    1. Hero Section:
+       - assets/images/hero-image.jpg (1920x1080px recommended)
+       - Should show: Confident, elegantly dressed woman in classy setting
+    
+    2. About Section:
+       - assets/images/about-brand.jpg (800x1000px recommended)
+       - Should show: Brand story, boutique interior, or styled fashion shoot
+    
+    3. Product Images (assets/images/products/):
+       - dress-1.jpg, dress-2.jpg, dress-3.jpg
+       - blazer-1.jpg, blazer-2.jpg
+       - set-1.jpg, set-2.jpg
+       - bag-1.jpg
+       - Each should be 600x800px minimum
+    
+    4. Service Images (assets/images/services/):
+       - wardrobe-transformation.jpg
+       - personal-styling.jpg
+       - personal-shopping.jpg
+       - Each should be 800x1000px
+    
+    5. About Page Images (assets/images/about/):
+       - brand-story.jpg (800x1000px)
+    
+    OPTIONAL:
+    You can use placeholder services like:
+    - https://unsplash.com (free high-quality images)
+    - https://pexels.com (free stock photos)
+    - https://placeholder.com (temporary placeholders)
+    
+    Search terms for appropriate images:
+    - "luxury fashion model"
+    - "elegant woman office wear"
+    - "high fashion boutique"
+    - "designer blazer"
+    - "elegant evening dress"
+    - "fashion styling"
+    - "wardrobe consultation"
+    
+    Note: Once you add your images, delete this file.
+-->
