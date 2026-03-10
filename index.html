@@ -10,12 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- ===== NAVIGATION ===== -->
     <header class="site-header" id="top">
@@ -94,7 +95,7 @@
     <!-- ===== SERVICES ===== -->
     <section class="services-section" id="services">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <p class="section-eyebrow">What We Offer</p>
                 <h2 class="section-title">Our Services</h2>
                 <div class="gold-line-center"></div>
@@ -103,52 +104,45 @@
 
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                            <path d="M26 6L30 18H42L33 25L36 37L26 31L16 37L19 25L10 18H22L26 6Z" stroke="#C6A75E"
-                                stroke-width="1.8" fill="none" stroke-linejoin="round" />
-                        </svg>
+                    <div class="service-img">
+                        <img src="assets/images/wadrobe.png" alt="Wardrobe Transformation">
                     </div>
-                    <h3>Wardrobe Transformation</h3>
-                    <p>Complete wardrobe audit and elegant upgrade. We declutter, reorganize, and rebuild a closet that
-                        truly reflects your best self.</p>
-                    <p class="service-price">From $599</p>
-                    <a href="#consultation" class="btn-text-gold">Book Now &rarr;</a>
+                    <div class="service-content">
+                        <h3>Wardrobe Transformation</h3>
+                        <p>Complete wardrobe audit and elegant upgrade. We declutter, reorganize, and rebuild a closet
+                            that
+                            truly reflects your best self.</p>
+                        <a href="#consultation" class="btn-text-gold">Book Now &rarr;</a>
+                    </div>
                 </div>
                 <div class="service-card fade-in-delay">
-                    <div class="service-icon">
-                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                            <circle cx="26" cy="26" r="18" stroke="#C6A75E" stroke-width="1.8" fill="none" />
-                            <circle cx="26" cy="18" r="5" stroke="#C6A75E" stroke-width="1.8" fill="none" />
-                            <path d="M16 38c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="#C6A75E" stroke-width="1.8"
-                                fill="none" />
-                        </svg>
+                    <div class="service-img">
+                        <img src="assets/images/personalsytling.png" alt="Personal Styling & Fashion Advice">
                     </div>
-                    <h3>Personal Styling &amp; Fashion Advice</h3>
-                    <p>Body-shape styling guidance, event dressing, and professional image consultation. Discover what
-                        works uniquely for you.</p>
-                    <p class="service-price">From $450</p>
-                    <a href="#consultation" class="btn-text-gold">Book Now &rarr;</a>
+                    <div class="service-content">
+                        <h3>Personal Styling &amp; Fashion Advice</h3>
+                        <p>Body-shape styling guidance, event dressing, and professional image consultation. Discover
+                            what
+                            works uniquely for you.</p>
+                        <a href="#consultation" class="btn-text-gold">Book Now &rarr;</a>
+                    </div>
                 </div>
                 <div class="service-card fade-in-delay-2">
-                    <div class="service-icon">
-                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                            <rect x="14" y="10" width="24" height="32" rx="2" stroke="#C6A75E" stroke-width="1.8"
-                                fill="none" />
-                            <path d="M20 10V14M32 10V14" stroke="#C6A75E" stroke-width="1.8" stroke-linecap="round" />
-                            <path d="M19 22h14M19 28h10" stroke="#C6A75E" stroke-width="1.8" stroke-linecap="round" />
-                        </svg>
+                    <div class="service-img">
+                        <img src="assets/images/shopping.png" alt="Personal Shopping Experience">
                     </div>
-                    <h3>Personal Shopping Experience</h3>
-                    <p>Let us curate and source pieces that align perfectly with your style profile. A luxury shopping
-                        day designed entirely around you.</p>
-                    <p class="service-price">From $350</p>
-                    <a href="#consultation" class="btn-text-gold">Book Now &rarr;</a>
+                    <div class="service-content">
+                        <h3>Personal Shopping Experience</h3>
+                        <p>Let us curate and source pieces that align perfectly with your style profile. A luxury
+                            shopping
+                            day designed entirely around you.</p>
+                        <a href="#consultation" class="btn-text-gold">Book Now &rarr;</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Packages -->
-            <div class="section-header" style="margin-top:5rem">
+            <div class="section-header reveal" style="margin-top:5rem">
                 <p class="section-eyebrow">Value Bundles</p>
                 <h2 class="section-title">Styling Packages</h2>
                 <div class="gold-line-center"></div>
@@ -203,7 +197,7 @@
     <!-- ===== COLLECTION ===== -->
     <section class="featured-collection" id="collection">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <p class="section-eyebrow">Curated for You</p>
                 <h2 class="section-title">Featured Collection</h2>
                 <div class="gold-line-center"></div>
@@ -322,7 +316,7 @@
     <!-- ===== FASHION TIPS ===== -->
     <section class="fashion-advice" id="tips">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <p class="section-eyebrow">Style Principles</p>
                 <h2 class="section-title">Fashion Wisdom</h2>
                 <div class="gold-line-center"></div>
@@ -360,7 +354,7 @@
     <!-- ===== TESTIMONIALS ===== -->
     <section class="testimonials-section" id="testimonials">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <p class="section-eyebrow">Client Love</p>
                 <h2 class="section-title">What Our Clients Say</h2>
                 <div class="gold-line-center"></div>
@@ -547,7 +541,7 @@
     <!-- ===== CONTACT ===== -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <p class="section-eyebrow">Get in Touch</p>
                 <h2 class="section-title">Contact Us</h2>
                 <div class="gold-line-center"></div>
