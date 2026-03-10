@@ -39,7 +39,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         lastScroll = currentScroll;
+
+        // ===== SCROLL PROGRESS BAR =====
+        const progressBar = document.getElementById('scrollProgress');
+        if (progressBar) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (currentScroll / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }
     });
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
