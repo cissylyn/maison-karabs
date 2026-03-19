@@ -270,6 +270,102 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ===== PARALLAX EFFECT FOR ABOUT SECTION =====
+    const aboutImage = document.querySelector('.about-img-placeholder img');
+    if (aboutImage) {
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            const aboutSection = document.querySelector('.about-section');
+            if (aboutSection) {
+                const sectionTop = aboutSection.offsetTop;
+                const sectionHeight = aboutSection.offsetHeight;
+                if (scrolled > sectionTop - window.innerHeight && scrolled < sectionTop + sectionHeight) {
+                    const parallax = (scrolled - sectionTop) * 0.1;
+                    aboutImage.style.transform = `scale(1.3) translateY(${parallax}px)`;
+                }
+            }
+        });
+    }
+
+    // ===== MOUSE FOLLOW EFFECT ON COLLECTION ITEMS =====
+    document.querySelectorAll('.collection-item').forEach(item => {
+        const overlay = item.querySelector('.collection-overlay');
+
+        item.addEventListener('mousemove', function (e) {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+
+        item.addEventListener('mouseleave', function () {
+            item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    });
+
+    // ===== STAGGER ANIMATION FOR SERVICE CARDS =====
+    const observeStagger = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll('.service-card, .advice-card, .package-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }, index * 150);
+                });
+                observeStagger.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.services-grid, .advice-grid, .packages-grid').forEach(grid => {
+        const cards = grid.querySelectorAll('.service-card, .advice-card, .package-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px) scale(0.95)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        observeStagger.observe(grid);
+    });
+
+    // ===== BUTTON RIPPLE EFFECT =====
+    document.querySelectorAll('.btn-gold, .btn-outline-gold, .btn-outline-dark').forEach(button => {
+        button.addEventListener('click', function (e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                left: ${x}px;
+                top: ${y}px;
+                pointer-events: none;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+            `;
+
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
     // ===== PRELOAD HERO IMAGE =====
     const heroImage = document.querySelector('.hero-bg');
     if (heroImage && heroImage.dataset.src) {
