@@ -865,6 +865,35 @@ section {
     }
 }
 
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
 /* Fade-in utility classes */
 .fade-in {
     animation: fadeIn 1s ease-out forwards;
@@ -1054,6 +1083,15 @@ section {
     .footer-links {
         grid-template-columns: 1fr;
     }
+
+    .about-img-placeholder {
+        height: 450px;
+    }
+
+    .about-img-placeholder img {
+        transform: scale(1.1);
+        object-position: center 15%;
+    }
 }
 
 /* ===== HERO — CSS GRADIENT BACKGROUND (no image required) ===== */
@@ -1209,7 +1247,9 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     border-radius: 2px;
+    transform: scale(1.3);
 }
 
 .about-badge {
