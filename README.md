@@ -184,7 +184,7 @@ For production deployment:
 ## 📞 Support
 
 For questions or support, contact:
-- Email: info@maisondekararbs.com
+- Email:Belkarabs@gmail.com
 - Phone: +1 (212) 555-1234
 
 ## 📄 License
