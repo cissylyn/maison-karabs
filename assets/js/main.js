@@ -270,23 +270,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== PARALLAX EFFECT FOR ABOUT SECTION =====
-    const aboutImage = document.querySelector('.about-img-placeholder img');
-    if (aboutImage) {
-        window.addEventListener('scroll', function () {
-            const scrolled = window.pageYOffset;
-            const aboutSection = document.querySelector('.about-section');
-            if (aboutSection) {
-                const sectionTop = aboutSection.offsetTop;
-                const sectionHeight = aboutSection.offsetHeight;
-                if (scrolled > sectionTop - window.innerHeight && scrolled < sectionTop + sectionHeight) {
-                    const parallax = (scrolled - sectionTop) * 0.1;
-                    aboutImage.style.transform = `scale(1.3) translateY(${parallax}px)`;
-                }
-            }
-        });
-    }
-
     // ===== MOUSE FOLLOW EFFECT ON COLLECTION ITEMS =====
     document.querySelectorAll('.collection-item').forEach(item => {
         const overlay = item.querySelector('.collection-overlay');
@@ -309,6 +292,21 @@ document.addEventListener('DOMContentLoaded', function () {
             item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
         });
     });
+
+    // ===== ANIMATE QUOTE AND ACCESSORIES BANNERS ON SCROLL =====
+    const quoteBanner = document.querySelector('.quote-banner img');
+    const accessoriesBanner = document.querySelector('.accessories-banner img');
+
+    const bannerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeIn 1s ease-out forwards';
+            }
+        });
+    }, { threshold: 0.2 });
+
+    if (quoteBanner) bannerObserver.observe(quoteBanner);
+    if (accessoriesBanner) bannerObserver.observe(accessoriesBanner);
 
     // ===== STAGGER ANIMATION FOR SERVICE CARDS =====
     const observeStagger = new IntersectionObserver((entries) => {
