@@ -194,6 +194,32 @@ p {
     margin-top: 0.25rem;
 }
 
+/* Brand text: matches the logo's serif styling and color */
+.brand-name {
+    font-family: var(--font-serif);
+}
+
+/* Split brand parts so each can use a different font matching the logo */
+.brand-maison {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 1em;
+    display: inline-block;
+    line-height: 1;
+}
+
+.brand-karabs {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 1em;
+    display: inline-block;
+    line-height: 1;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
@@ -529,7 +555,7 @@ section {
 
 .collection-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -602,6 +628,37 @@ section {
     background-color: var(--color-champagne);
 }
 
+/* Featured Quote Card */
+.featured-quote-wrapper {
+    max-width: 1100px;
+    margin: 3rem auto 4rem;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.featured-quote-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.featured-quote-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.featured-quote-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.featured-quote-card:hover .featured-quote-img {
+    transform: scale(1.02);
+}
+
 .advice-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -615,6 +672,78 @@ section {
     border-radius: 2px;
     position: relative;
     border-left: 3px solid var(--color-gold);
+}
+
+/* Accessories Visual Card */
+.advice-card-visual {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    grid-column: span 1;
+    height: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.advice-card-visual:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(198, 167, 94, 0.25);
+}
+
+.advice-card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.6s ease;
+}
+
+.advice-card-visual:hover img {
+    transform: scale(1.08);
+}
+
+.visual-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(26, 26, 26, 0.95) 0%, rgba(26, 26, 26, 0.7) 60%, transparent 100%);
+    padding: 2.5rem;
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.advice-card-visual:hover .visual-overlay {
+    transform: translateY(0);
+}
+
+.visual-overlay h3 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.visual-overlay p {
+    color: var(--color-gold);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.visual-overlay .btn-view {
+    background: var(--color-gold);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+}
+
+.visual-overlay .btn-view:hover {
+    background: var(--color-gold-dark);
+    transform: translateY(-2px);
 }
 
 .advice-number {
@@ -870,6 +999,7 @@ section {
         transform: scale(0);
         opacity: 1;
     }
+
     to {
         transform: scale(4);
         opacity: 0;
@@ -877,18 +1007,24 @@ section {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-10px);
     }
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
@@ -1005,6 +1141,47 @@ section {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
+/* ===== QUOTE BANNER ===== */
+.quote-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.quote-banner img:hover {
+    transform: scale(1.02);
+    transition: transform 0.6s ease;
+}
+
+/* ===== ACCESSORIES BANNER ===== */
+.accessories-banner {
+    position: relative;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.accessories-banner img {
+    transition: transform 0.5s ease;
+}
+
+.accessories-banner:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .accessories-banner div[style*="position: absolute"] {
+        position: static !important;
+        background: rgba(26, 26, 26, 0.95) !important;
+        margin: 0 !important;
+        padding: 1.5rem !important;
+    }
+
+    .accessories-banner h3 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1200px) {
     .collection-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1091,6 +1268,14 @@ section {
     .about-img-placeholder img {
         transform: scale(1.1);
         object-position: center 15%;
+    }
+
+    .featured-quote-wrapper {
+        margin: 1.5rem auto 2.5rem;
+    }
+
+    .featured-quote-card {
+        border-radius: 2px;
     }
 }
 
@@ -1250,6 +1435,7 @@ section {
     object-position: center top;
     border-radius: 2px;
     transform: scale(1.3);
+    transition: transform 0.3s ease-out;
 }
 
 .about-badge {
@@ -1815,6 +2001,10 @@ section {
 
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .featured-quote-wrapper {
+        margin: 2rem auto 3rem;
     }
 }
 
