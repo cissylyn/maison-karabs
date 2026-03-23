@@ -64,6 +64,11 @@ a {
     transition: var(--transition-fast);
 }
 
+/* Smooth transitions for interactive elements */
+a, .nav-link, .btn-gold, .btn-outline-gold, .btn-text-gold, .btn-view, .logo-img, .footer-logo-img, img {
+    transition: var(--transition-smooth);
+}
+
 ul {
     list-style: none;
 }
