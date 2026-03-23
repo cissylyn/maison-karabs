@@ -29,6 +29,8 @@
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease;
+    /* fixed header spacing used to offset top content so it isn't hidden */
+    --header-space: 85px;
 }
 
 /* ===== RESET & BASE STYLES ===== */
@@ -65,7 +67,15 @@ a {
 }
 
 /* Smooth transitions for interactive elements */
-a, .nav-link, .btn-gold, .btn-outline-gold, .btn-text-gold, .btn-view, .logo-img, .footer-logo-img, img {
+a,
+.nav-link,
+.btn-gold,
+.btn-outline-gold,
+.btn-text-gold,
+.btn-view,
+.logo-img,
+.footer-logo-img,
+img {
     transition: var(--transition-smooth);
 }
 
@@ -358,7 +368,7 @@ p {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-top: 80px;
+    padding-top: var(--header-space);
 }
 
 .hero-image {
@@ -388,7 +398,7 @@ p {
 
 .hero-content {
     position: relative;
-    z-index: 10;
+    z-index: 1100;
     text-align: center;
     color: var(--color-white);
     padding: 0 2rem;
@@ -472,10 +482,11 @@ section {
 
 .about-image img {
     width: 100%;
-    height: auto;
-    max-height: 600px;
+    /* fixed container height to crop bottom (hide lower area) while keeping forehead visible */
+    height: 460px;
     object-fit: cover;
-    object-position: center top;
+    /* prioritize the top of the image (forehead) */
+    object-position: 50% 6%;
     border-radius: 2px;
 }
 
@@ -486,11 +497,10 @@ section {
     }
 
     .about-image img {
-        /* Let the image scale without forcing a fixed height so the head isn't cropped */
-        height: auto;
-        max-height: none;
-        object-fit: contain;
-        object-position: top center;
+        /* smaller fixed height on tablet to hide lower area but keep head visible */
+        height: 380px;
+        object-fit: cover;
+        object-position: 50% 8%;
     }
 }
 
@@ -1483,7 +1493,8 @@ section {
 .about-img-placeholder {
     position: relative;
     width: 100%;
-    height: 580px;
+    /* crop more from the bottom so lower area is hidden */
+    height: 460px;
     background: linear-gradient(135deg, var(--color-champagne) 0%, var(--color-beige) 100%);
     border-radius: 2px;
     overflow: hidden;
@@ -1493,15 +1504,17 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    /* prioritize the top of the image (forehead) and nudge upward */
+    object-position: 50% 6%;
     border-radius: 2px;
-    transform: scale(1.3);
+    transform: scale(1.08) translateY(-2%);
     transition: transform 0.3s ease-out;
 }
 
 .about-badge {
     position: absolute;
-    bottom: 2rem;
+    /* slightly higher position so the badge sits closer to the image */
+    bottom: 0rem;
     right: -1.5rem;
     background: var(--color-black);
     color: var(--color-white);
@@ -2081,5 +2094,28 @@ section {
 
     .about-img-placeholder {
         height: 380px;
+    }
+}
+
+/* Fix: ensure fixed header doesn't overlap top content (eyebrow/header) */
+:root {
+    --header-space: 80px;
+}
+
+body {
+    padding-top: var(--header-space);
+}
+
+.hero-section {
+    margin-top: 0;
+}
+
+@media (max-width: 640px) {
+    :root {
+        --header-space: 72px;
+    }
+
+    body {
+        padding-top: var(--header-space);
     }
 }
