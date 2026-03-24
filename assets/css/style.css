@@ -362,7 +362,7 @@ p {
 /* ===== HERO SECTION ===== */
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: calc(100vh - var(--header-space));
     min-height: 700px;
     display: flex;
     align-items: center;
@@ -537,6 +537,7 @@ section {
 
 .about-content {
     padding: 2rem;
+    text-align: justify;
 }
 
 .about-list {
@@ -1348,6 +1349,28 @@ section {
     .featured-quote-card {
         border-radius: 2px;
     }
+
+    /* Crop collection/service images higher on small screens so hips are hidden */
+    .collection-image img,
+    .collection-item img,
+    .service-img img {
+        object-position: 50% 8% !important;
+    }
+}
+
+/* Additional: ensure the About image crops higher on very small screens (hide hips - show only top half) */
+@media (max-width: 640px) {
+    .about-img-placeholder {
+        height: 280px !important;
+        overflow: hidden;
+    }
+
+    .about-img-placeholder img {
+        object-fit: cover !important;
+        object-position: 50% 0% !important;
+        transform: translateY(0%) !important;
+        transition: transform 0.25s ease-out;
+    }
 }
 
 /* ===== HERO — CSS GRADIENT BACKGROUND (no image required) ===== */
@@ -1959,6 +1982,12 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Make the TikTok mark larger inside its contact row */
+.contact-tiktok .contact-icon svg {
+    width: 40px;
+    height: 40px;
 }
 
 .contact-detail h4 {
