@@ -432,7 +432,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p><a href="mailto:maisondekarabs@gmail.com">maisondekarabs@gmail.com</a></p>
+                            <p><a href="mailto:musiimentacissylyn7@gmail.com">maisondekarabs@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="contact-detail contact-tiktok">
@@ -458,7 +458,7 @@
                     </div>
                 </div>
                 <div class="contact-form-wrapper fade-in-right">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" method="POST" action="contact-handler.php">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contactName">Full Name *</label>
@@ -484,7 +484,8 @@
                             <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us more..."
                                 required></textarea>
                         </div>
-                        <button type="submit" class="btn-gold btn-full">Send Message</button>
+                        <button type="submit" class="btn-gold btn-full" id="submitBtn">Send Message</button>
+                        <div id="formMessage" style="margin-top: 1rem; text-align: center; display: none; font-weight: 500;"></div>
                     </form>
                 </div>
             </div>

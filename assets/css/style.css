@@ -1358,17 +1358,17 @@ section {
     }
 }
 
-/* Additional: ensure the About image crops higher on very small screens (hide hips - show only top half) */
+/* Additional: ensure the About image crops higher on very small screens (hide hips completely - show only head/upper body) */
 @media (max-width: 640px) {
     .about-img-placeholder {
-        height: 280px !important;
+        height: 240px !important;
         overflow: hidden;
     }
 
     .about-img-placeholder img {
         object-fit: cover !important;
-        object-position: 50% 0% !important;
-        transform: translateY(0%) !important;
+        object-position: 50% -10% !important;
+        transform: translateY(-10%) !important;
         transition: transform 0.25s ease-out;
     }
 }

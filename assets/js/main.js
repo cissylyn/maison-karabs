@@ -146,9 +146,71 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== FORM VALIDATION (for consultation page) =====
-    const forms = document.querySelectorAll('.contact-form, .consultation-form');
-    forms.forEach(form => {
+    // ===== CONTACT FORM HANDLER (with AJAX submission) =====
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.textContent;
+
+            // Basic validation
+            const inputs = this.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                    input.addEventListener('input', function () {
+                        this.classList.remove('error');
+                    });
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+
+            if (!isValid) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Send form data via AJAX
+            fetch('contact-handler.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+
+                if (data.success) {
+                    showNotification(data.success, 'success');
+                    contactForm.reset();
+                } else if (data.error) {
+                    showNotification(data.error, 'error');
+                }
+            })
+            .catch(error => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+                showNotification('An error occurred. Please try again.', 'error');
+                console.error('Error:', error);
+            });
+        });
+    }
+
+    // ===== OTHER FORM VALIDATION (for consultation page) =====
+    const otherForms = document.querySelectorAll('.consultation-form');
+    otherForms.forEach(form => {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
